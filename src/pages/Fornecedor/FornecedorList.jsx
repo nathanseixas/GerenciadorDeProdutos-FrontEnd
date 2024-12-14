@@ -7,8 +7,12 @@ const FornecedorList = () => {
     const [fornecedores, setFornecedores] = useState([])
 
     useEffect(() => {
+        axios.get("/fornecedores")
+        .then(response => setFornecedores(response.data))
+        .catch(error => console.log("Error ao carregar fornecedores: ", error))
 
-    })
+
+    }, []) 
 
 
   return (
