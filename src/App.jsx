@@ -1,9 +1,13 @@
 import React from 'react'
-import './index.css'
+import { BrowserRouter } from 'react-router-dom'
+import FornecedorList from './pages/Fornecedor/FornecedorList'
+
 
 const App = () => {
   return (
-    <div>App</div>
+    <BrowserRouter>
+      <FornecedorList />
+    </BrowserRouter>
   )
 }
 
