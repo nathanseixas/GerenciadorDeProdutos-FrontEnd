@@ -1,18 +1,34 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import axios from '../../api'
-import { FaEdit, FaPlus, FaTrash } from 'react-icons/fa'
+import { FaCheckCircle, FaEdit, FaExclamationTriangle, FaPlus, FaTrash } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+import Modal from 'react-modal'
 
 const FornecedorList = () => {
 
     const [fornecedores, setFornecedores] = useState([])
+    const [fornecedorSelecionado, setFornecedorSelecionado] = useState(null)
+    const [modalAberto, setModalAberto] = useState(false)
+    const [modalSucessoAbertot, setModalSucessoAberto ] = useState(false)
 
     useEffect(() => {
         axios.get("/fornecedores")
         .then(response => setFornecedores(response.data))
         .catch(error => console.error("Error ao carregar fornecedores: ", error))
     }, []) 
+
+    
+    const abirModal = (fornecedor) => {
+        setFornecedorSelecionado(fornecedor)
+        setModalAberto(true)
+
+    }
+
+    const fecharModal = () => {
+        setModalAberto(false)
+        setFornecedorSelecionado(null)
+    }
 
 
   return (
@@ -39,7 +55,7 @@ const FornecedorList = () => {
                             <td>
                                 <Link to={`/edit-fornecedores/${fornecedor.id}`} className="btn btn-sm btn-warning">
                                 <FaEdit className="icon icon-btn" />Editar</Link>
-                                <button className="btn btn-sm btn-danger">
+                                <button onClick={()=> abirModal(fornecedor)} className="btn btn-sm btn-danger">
                                     <FaTrash className="icon icon-btn" />
                                     Excluir
 
@@ -51,6 +67,42 @@ const FornecedorList = () => {
             </tbody>
 
         </table>
+
+        <Modal
+            isOpen={modalAberto}
+            className="modal"
+            overlayClassName="overlay"
+        >
+            <div className="modalContent">
+                <FaExclamationTriangle className="icon" />
+                <h2>Confirmar Exclusão</h2>
+                <p>Tem certeza que deseja excluir o fornecedor
+                {fornecedorSelecionado && fornecedorSelecionado.nome}?</p>
+                <div className="modalButtons">
+                    <button onClick={fecharModal} className="btn btn-secondary">Cancelar</button>
+                    <button className="btn btn-danger"></button>
+
+                </div>
+
+
+            </div>
+            
+        </Modal>
+
+
+        <Modal 
+            isOpen={modalSucessoAbertot}
+            onRequestClose={() => setModalSucessoAberto(false)}
+            className="modal"
+            overlayClassName="overlay"
+
+        >
+            <div className="ModalCoctent">
+                <FaCheckCircle className="icon sucessIcon" />
+                <h2>Fornecedor excluido com sucesso!</h2>
+            </div>
+
+        </Modal>
 
     </div>
   )
