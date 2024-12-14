@@ -30,6 +30,21 @@ const FornecedorList = () => {
         setFornecedorSelecionado(null)
     }
 
+    const abrirModalSucesso = () => {
+        setModalSucessoAberto(true)
+        setTimeout(() => setModalSucessoAberto(false), 2000)
+    }
+
+    const removerFornecedor = () => {
+        axios.delete(`/fornecedores/${fornecedorSelecionado.id}`)
+        .then(() => {
+            setFornecedores(prevFornecedores => prevFornecedores.filter 
+                (fornecedor => fornecedor.id != fornecedorSelecionado.id))
+                fecharModal()
+                abirModal()
+        })
+    }
+
 
   return (
     <div className="container mt-5">
@@ -80,7 +95,7 @@ const FornecedorList = () => {
                 {fornecedorSelecionado && fornecedorSelecionado.nome}?</p>
                 <div className="modalButtons">
                     <button onClick={fecharModal} className="btn btn-secondary">Cancelar</button>
-                    <button className="btn btn-danger"></button>
+                    <button onClick={removerFornecedor} className="btn btn-danger">Excluir</button>
 
                 </div>
 
