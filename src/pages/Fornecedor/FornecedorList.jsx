@@ -6,7 +6,7 @@ const FornecedorList = () => {
     const [fornecedores, setFornecedores] = useState([])
 
     useEffect(() => {
-        
+
     })
 
 
