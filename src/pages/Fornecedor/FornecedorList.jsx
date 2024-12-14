@@ -16,7 +16,10 @@ const FornecedorList = () => {
 
 
   return (
-    <div>FornecedorList</div>
+    <div className="container mt-5">
+        <h2 className="mb-4" style={{ position: 'relative' }}>Lista de Fornecedores</h2>
+
+    </div>
   )
 }
 
