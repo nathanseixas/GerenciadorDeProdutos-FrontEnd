@@ -239,6 +239,14 @@
       "fornecedor": {
         "nome": "Fornecedor ABC"
       }
+    },
+    {
+      "nome": "tomate",
+      "preco": "8.50",
+      "descricao": "tomate do bom",
+      "quantidadeEstoque": "500",
+      "fornecedorId": "7",
+      "id": 6
     }
   ],
   "clientes": [
