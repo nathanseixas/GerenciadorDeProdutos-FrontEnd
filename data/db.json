@@ -313,6 +313,22 @@
         "estado": "PR",
         "pais": "Brasil"
       }
+    },
+    {
+      "nome": "Viniciuus arrombao",
+      "cpf": "12345678909",
+      "email": "vinicius@gmail.com",
+      "endereco": {
+        "logradouro": "Rua Abdias Gomes de Almeida",
+        "numero": "947",
+        "complemento": "apartamento 802",
+        "bairro": "Tambauzinho",
+        "cidade": "João Pessoa",
+        "estado": "PB",
+        "pais": "Brasil",
+        "cep": "58042100"
+      },
+      "id": 5
     }
   ]
 }
