@@ -50,7 +50,8 @@ const Navbar = () => {
         {dropDownAberto && (
           <div className="dropdown-menu">
             <Link to="/alterar-senha">Alterar Senha</Link>
-            <button onClick={logout}>Sair</button>
+            <Link to="/logout" onClick={logout}>Sair</Link>
+
           </div>
         )}
       </div>
